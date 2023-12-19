@@ -5,7 +5,7 @@ function Home() {
     <div>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">my project</a>
         </h1>
       </main>
     </div>
@@ -13,3 +13,10 @@ function Home() {
 }
 
 export default Home;
+
+
+
+
+
+
+
