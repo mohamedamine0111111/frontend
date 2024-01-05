@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
+import Fab from '@mui/material/Fab';
+import NavigationIcon from '@mui/icons-material/Navigation';
 
 
 import { useDispatch } from 'react-redux';
@@ -129,11 +131,15 @@ const handleSignIn = () => {
       return (
         <header> 
           <div className={styles.header}>
-            <div>
-                {/* <img src="" /> LOGO */}
-                <span className={styles.link}> <Link href="/"><img className={styles.image}src='/logo.png' width={150}/></Link></span>
-            </div>
-    
+          <Link href="/">
+            
+            <a className={styles.link}><img className={styles.image} src='/logo.png' width={150}/></a>
+            </Link>
+            <Link href="/reservation" passHref>
+            <Fab variant="extended">
+        <NavigationIcon sx={{ mr: 1 }} />
+        Réservez Dès Maintenant
+          </Fab></Link>
             <Stack spacing={2} direction="row" className={styles.SignContainer}>
                 <Button  variant="contained" className={styles.Signup} onClick={handleOpenSignup}>Inscription</Button>
                 <Button   variant="contained" className={styles.Signin} onClick={handleOpenSignin}>Connexion</Button>

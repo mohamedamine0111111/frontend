@@ -1,7 +1,7 @@
-import Reservation from '../components/Reservation';
+import Home from '../components/Home';
 
 function Index() {
-  return <Reservation />;
+  return <Home />;
 
 
 }
