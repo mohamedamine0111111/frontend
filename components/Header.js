@@ -68,7 +68,7 @@ function Header() {
 
 
   // Envoyer à la route Signup les infos de l'utilisateur
-  fetch('http://localhost:3000/users/signup', {
+  fetch('https://backend-69akwqelc-mohameds-projects-0a53d120.vercel.app/users/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -101,9 +101,9 @@ const handleSignIn = () => {
    
   };
 
+  
 
-
-  fetch('http://localhost:3000/users/signin', {
+  fetch('https://backend-69akwqelc-mohameds-projects-0a53d120.vercel.app/users/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -123,7 +123,6 @@ const handleSignIn = () => {
         console.error('Erreur lors de l’inscription', error);
       });
       }
-
 
     
 
