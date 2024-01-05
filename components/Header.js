@@ -178,7 +178,7 @@ const handleSignIn = () => {
               onChange={(e)=>setSignInEmail(e.target.value)}  />
               <input  style={{marginTop:10}}   type="password" placeholder="mot de passe" id="signInPassword" value={signInPassword}
               onChange={(e)=>setSignInPassword(e.target.value)} />
-              <button style={{marginTop:10}} id="connection" onClick={handleSignIn}>Se connecter</button></div>
+              <Button style={{marginTop:10}} id="connection" onClick={handleSignIn}>Se connecter</Button></div>
             </Box>
           </Modal>
     

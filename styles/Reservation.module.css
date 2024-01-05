@@ -2,11 +2,11 @@
 
 
 .h2 {
-    background-color: #D9D9D9; /* Couleur de fond du titre */
-    border-radius: 8px; /* Rayon des coins arrondis */
-    padding: 10px; /* Espacement intérieur */
-    text-align: center; /* Centrer le texte */
-    margin-bottom: 20px; /* Espace sous le titre */
+    background-color: #D9D9D9; 
+    border-radius: 8px;
+    padding: 10px; 
+    text-align: center; 
+    margin-bottom: 20px; 
     color: #74757B ;
 }
 
@@ -22,16 +22,16 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    width: 100px; /* Ajustez la largeur ici */
-    height: 100px; /* Ajustez la hauteur ici */
+    width: 100px; 
+    height: 100px; 
     
 }
 
 .heures {
     
-    display: flex; /* Utiliser Flexbox pour aligner les éléments */
-    justify-content: center; /* Centrer les éléments horizontalement */
-    align-items: center; /* Aligner les éléments verticalement */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
     border: 1px solid #ccc;
     
 
@@ -40,7 +40,7 @@
 
 .containerRow {
     display: flex;
-    justify-content: space-around; /* Ajustez l'espacement selon vos besoins */
+    justify-content: space-around; 
     align-items: center;
 }
 
