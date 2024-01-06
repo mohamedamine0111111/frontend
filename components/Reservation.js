@@ -106,7 +106,7 @@ const Reservation = () => {
             user: userId,
         };
     
-       // stocker userId dans le reducer pour ensuite pouvoir l'envoyer 
+        
 
         fetch('https://backend-69akwqelc-mohameds-projects-0a53d120.vercel.app/missions/order', {
             method: 'POST',

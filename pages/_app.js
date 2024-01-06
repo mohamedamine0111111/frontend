@@ -17,7 +17,7 @@ function App({ Component, pageProps }) {
     <>
     <Provider store={store}>
       <Head>
-        <title> Nettoyage a domicile 2023</title>
+        <title> Nettoyage a domicile 2024</title>
       </Head>
       <Header />
       <Component {...pageProps} />
