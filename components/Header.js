@@ -55,7 +55,7 @@ function Header() {
 
 
   const handleSignUp = () => {
-    
+    console.log()
     const signUpData = {
       
       email: signUpEmail,
@@ -78,7 +78,7 @@ function Header() {
   .then(response => response.json())
   .then(data => {
    
-    console.log('Inscription réussie', data);
+    console.log('réponse serveur', data);
     dispatch(setUserId(data.userId));
     handleCloseSignup(); 
     // Stocker le token et l'ID dans le reducer
@@ -98,7 +98,7 @@ const handleSignIn = () => {
       
     email: signInEmail,
     password: signInPassword,
-   
+    
   };
 
   
@@ -112,7 +112,7 @@ const handleSignIn = () => {
   })
   .then(response => response.json())
   .then(data => {
-    console.log('Inscription réussie', data);
+    console.log('réponse du serveur', data);
     dispatch(setUserId(data.userId));
     handleCloseSignin(); 
     // Stocker le token et l'ID dans le reducer
@@ -162,7 +162,7 @@ const handleSignIn = () => {
               onChange={(e)=>setSignUpAdress(e.target.value)}  />
               <input style={{marginTop:10}} type="phone" placeholder="numéro de télephone" id="signUpPhone" value={signUpPhone}
               onChange={(e)=>setSignUpPhone(e.target.value)} /> 
-              <button style={{marginTop:10}} id="register" onClick={handleSignUp}>S'inscrire</button></div>
+              <Button  style={{marginTop:10, color: '#74757B'}} id="register" onClick={handleSignUp}>S'inscrire</Button></div>
             </Box>
           </Modal>
           
@@ -178,7 +178,7 @@ const handleSignIn = () => {
               onChange={(e)=>setSignInEmail(e.target.value)}  />
               <input  style={{marginTop:10}}   type="password" placeholder="mot de passe" id="signInPassword" value={signInPassword}
               onChange={(e)=>setSignInPassword(e.target.value)} />
-              <Button style={{marginTop:10}} id="connection" onClick={handleSignIn}>Se connecter</Button></div>
+              <Button style={{marginTop:10, color: '#74757B'}} id="connection" onClick={handleSignIn}>Se connecter</Button></div>
             </Box>
           </Modal>
     

@@ -1,8 +1,9 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import styles from '../styles/Reservation.module.css';
 
+import * as React from 'react';
 
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs from 'dayjs';
@@ -81,11 +82,12 @@ const Reservation = () => {
     };
     
     const augmenterHeures = () => {
+        if (nombreHeures < 8 )
         setNombreHeures(nombreHeures + 1);
     };
     
     const diminuerHeures = () => {
-        if (nombreHeures > 3) {
+        if (nombreHeures > 3 ) {
             setNombreHeures(nombreHeures - 1);
         }
     };
@@ -93,6 +95,7 @@ const Reservation = () => {
 
     const handleReservationSubmit = () => {
         console.log(userId)
+        
         const reservationData = {
             rooms: {
                 bedrooms: nombreChambres,

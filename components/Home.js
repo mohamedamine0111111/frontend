@@ -15,10 +15,8 @@ function Home() {
             <li>Contrat sans engagement</li>
             <li>Ménages uniques</li>
           </ul>
-          
-        </div>
-        
-      </div>
+          </div></div>
+      
       <div className={styles.bloc2}>
         <h2 className={styles.titre}>CleanSweetHome C'est quoi ?</h2>
         <p className={styles.description}>
