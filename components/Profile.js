@@ -13,7 +13,7 @@ function UserProfile() {
   }, [userId]);
 
   function fetchUserProfile(userId) {
-    fetch(`https://backend-two-ashen.vercel.app/users/${userId}/profile`)
+    fetch(`https://backend-five-virid.vercel.app/${userId}/profile`)
       .then(response => response.json())
       .then(data => {
         if (data.result) {
