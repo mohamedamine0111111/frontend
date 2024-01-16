@@ -13,7 +13,7 @@ function UserProfile() {
   }, [userId]);
 
   function fetchUserProfile(userId) {
-    fetch(`https://backend-five-virid.vercel.app/${userId}/profile`)
+    fetch(`http://localhost:3000/${userId}/profile`)
       .then(response => response.json())
       .then(data => {
         if (data.result) {

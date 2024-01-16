@@ -1,0 +1,18 @@
+
+.container {
+    padding: 3rem;
+    background-color:#D9D9D9;
+    
+  }
+  .rowFlex {
+    display: flex;
+  }
+  .columnHalf {
+    width: 50%;
+    
+  }
+  .alignCenter {
+    align-items: center;
+  }
+  
+  

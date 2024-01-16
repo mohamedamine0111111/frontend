@@ -68,7 +68,7 @@ function Header() {
 
 
   // Envoyer à la route Signup les infos de l'utilisateur
-  fetch('https://backend-five-virid.vercel.app/users/signup', {
+  fetch('http://localhost:3000/users/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ function Header() {
     console.log('réponse', data);
     dispatch(setUserId(data.userId));
     handleCloseSignup(); 
-    // Stocker le token et l'ID dans le reducer
+    
     // Redirection vers la page de réservation.
   })
   .catch(error => {
@@ -103,7 +103,7 @@ const handleSignIn = () => {
 
   
 
-  fetch('https://backend-five-virid.vercel.app/users/signin', {
+  fetch('http://localhost:3000/users/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ const handleSignIn = () => {
     console.log('réponse du serveur', data);
     dispatch(setUserId(data.userId));
     handleCloseSignin(); 
-    // Stocker le token et l'ID dans le reducer
+    
     // Redirection vers la page de réservation.
   })
   .catch(error => {
@@ -128,15 +128,16 @@ const handleSignIn = () => {
 
 
       return (
+        
         <header> 
           <div className={styles.header}>
           <Link href="/">
             
-            <a className={styles.link}><img className={styles.image} src='/logo.png' width={150}/></a>
+            <a className={styles.link}><img className={`${styles.image} img-fluid `} src='/Logo.png' width={100}/></a>
             </Link>
             <Link href="/reservation" passHref>
-            <Fab variant="extended">
-        <NavigationIcon sx={{ mr: 1 }} />
+            <Fab variant="extended" sx={{ mr: 1, color: '#74757B' }}>
+        <NavigationIcon sx={{ mr: 1, color: '#74757B' }} />
         Réservez Dès Maintenant
           </Fab></Link>
             <Stack spacing={2} direction="row" className={styles.SignContainer}>
@@ -162,7 +163,9 @@ const handleSignIn = () => {
               onChange={(e)=>setSignUpAdress(e.target.value)}  />
               <input style={{marginTop:10}} type="phone" placeholder="numéro de télephone" id="signUpPhone" value={signUpPhone}
               onChange={(e)=>setSignUpPhone(e.target.value)} /> 
-              <Button  style={{marginTop:10, color: '#74757B'}} id="register" onClick={handleSignUp}>S'inscrire</Button></div>
+            <Link href="/reservation"> <Button  style={{marginTop:10, color: '#74757B'}} id="register" onClick={handleSignUp}>S'inscrire</Button></Link>
+            
+            </div>
             </Box>
           </Modal>
           
@@ -178,7 +181,10 @@ const handleSignIn = () => {
               onChange={(e)=>setSignInEmail(e.target.value)}  />
               <input  style={{marginTop:10}}   type="password" placeholder="mot de passe" id="signInPassword" value={signInPassword}
               onChange={(e)=>setSignInPassword(e.target.value)} />
-              <Button style={{marginTop:10, color: '#74757B'}} id="connection" onClick={handleSignIn}>Se connecter</Button></div>
+<Link href="/Reservation" passHref>
+  <Button style={{marginTop:10, color: '#74757B'}} id="connection" onClick={handleSignIn}>Se connecter</Button>
+  </Link>
+           </div>
             </Box>
           </Modal>
     
