@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 
 
 const Reservation = () => {
+    const BACK_END_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     const [nombreChambres, setNombreChambres] = useState(0);
     const [nombreCuisines, setNombreCuisines] = useState(0);
@@ -111,7 +112,7 @@ const Reservation = () => {
     
         
 
-        fetch('http://localhost:3000/missions/order', {
+        fetch(`${BACK_END_URL}/missions/order`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

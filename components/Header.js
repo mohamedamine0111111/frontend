@@ -19,7 +19,7 @@ function Header() {
   const [openSignup, setOpenSignup] = useState(false);
   const [openSignin, setOpenSignin] = useState(false);
   const router = useRouter()
-
+  const BACK_END_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
   const [signUpEmail, setSignUpEmail] = useState('');
   const [signUpPassword, setSignUpPassword] = useState('');
   const [signUpFirstName, setSignUpFirstName] = useState('');
@@ -69,7 +69,7 @@ function Header() {
 
 
 
-    fetch('http://localhost:3000/users/signup', {
+    fetch(`${BACK_END_URL}/users/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ function Header() {
       password: signInPassword,
     };
 
-    fetch('http://localhost:3000/users/signin', {
+    fetch(`${BACK_END_URL}/users/signin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
