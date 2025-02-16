@@ -1,117 +1,46 @@
-
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import styles from '../styles/Reservation.module.css';
-
 import * as React from 'react';
-
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
 import { useSelector } from 'react-redux';
-
-
-
 
 const Reservation = () => {
     const BACK_END_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
-
-    const [nombreChambres, setNombreChambres] = useState(0);
-    const [nombreCuisines, setNombreCuisines] = useState(0);
-    const [nombreSalons, setNombreSalons] = useState(0);
-    const [nombreSalleDeBains, setNombreSalleDeBains] = useState(0);
+    const [nombrePieces, setNombrePieces] = useState({
+        Chambre: 0,
+        Cuisine: 0,
+        Salon: 0,
+        "Salle de Bain": 0
+    });
     const [nombreHeures, setNombreHeures] = useState(3);
-    
     const [dateHours, setDateHours] = useState(dayjs());
-
-
-    
-    
-    
-    
     const userId = useSelector((state) => state.users.userId);
     
     const handleDateTimeChange = (newDateHours) => {
         setDateHours(newDateHours);
     };
-    
-    
-    
-    
-    const augmenterChambres = () => {
-        setNombreChambres(nombreChambres + 1);
+
+    const handlePieceChange = (piece, increment) => {
+        setNombrePieces((prev) => ({
+            ...prev,
+            [piece]: Math.max(0, prev[piece] + increment)
+        }));
     };
-    
-    const diminuerChambres = () => {
-        if (nombreChambres > 0) {
-            setNombreChambres(nombreChambres - 1);
-        }
-    };
-    
-    
-    const augmenterCuisines= () => {
-        setNombreCuisines(nombreCuisines + 1);
-    };
-    
-    const diminuerCuisines = () => {
-        if (nombreCuisines > 0) {
-            setNombreCuisines(nombreCuisines - 1);
-        }
-    };
-    
-    const augmenterSalons = () => {
-        setNombreSalons(nombreSalons + 1);
-    };
-    
-    const diminuerSalons = () => {
-        if (nombreSalons > 0) {
-            setNombreSalons(nombreSalons - 1);
-        }
-    };
-    
-    
-    const augmenterSalleDeBains = () => {
-        setNombreSalleDeBains(nombreSalleDeBains + 1);
-    };
-    
-    const diminuerSalleDeBains = () => {
-        if (nombreSalleDeBains > 0) {
-            setNombreSalleDeBains(nombreSalleDeBains - 1);
-        }
-    };
-    
-    const augmenterHeures = () => {
-        if (nombreHeures < 8 )
-        setNombreHeures(nombreHeures + 1);
-    };
-    
-    const diminuerHeures = () => {
-        if (nombreHeures > 3 ) {
-            setNombreHeures(nombreHeures - 1);
-        }
-    };
-    
 
     const handleReservationSubmit = () => {
-        console.log(userId)
-        
+        console.log(userId);
         const reservationData = {
-            rooms: {
-                bedrooms: nombreChambres,
-                kitchen: nombreCuisines,
-                living: nombreSalons,
-                bathrooms: nombreSalleDeBains
-            },
+            rooms: nombrePieces,
             dateTimeStart: dateHours.toISOString(),
-            dateTimeStop: dateHours.add(nombreHeures).toISOString(),
-           hasProducts:true,
+            dateTimeStop: dateHours.add(nombreHeures, 'hour').toISOString(),
+            hasProducts: true,
             user: userId,
         };
-    
         
-
         fetch(`${BACK_END_URL}/missions/order`, {
             method: 'POST',
             headers: {
@@ -123,107 +52,61 @@ const Reservation = () => {
         .then(response => response.json())
         .then(data => {
             console.log('Réservation réussie', data);
-            
         })
         .catch(error => {
             console.error('Erreur lors de la réservation', error);
-            
         });
-    }
-    
-    
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    };
+
     return (
-    <main>
-            <div className={styles.container}>
-                <h2   className={styles.h2} > Pour combien de pièces souhaiteriez-vous bénéficier de nos services ?</h2>
-                <div className={styles.containerRow}>
-                    <div className={styles.roomsNumber}>
-                        <span className={styles.namingRooms}>Chambre</span>
-                        <Button onClick={augmenterChambres}>+</Button>
-                        <span>{nombreChambres}</span>
-                        <Button onClick={diminuerChambres}>-</Button>
-                    </div>
-                    <div className={styles.roomsNumber}>
-                        <span className={styles.namingRooms} >Cuisine</span>
-                        <Button onClick={augmenterCuisines}>+</Button>
-                        <span>{nombreCuisines}</span>
-                        <Button onClick={diminuerCuisines}>-</Button>
-                    </div>
-                    <div className={styles.roomsNumber}>
-                        <span className={styles.namingRooms}>Salon</span>
-                        <Button onClick={augmenterSalons}>+</Button>
-                        <span>{nombreSalons}</span>
-                        <Button onClick={diminuerSalons}>-</Button>
-                    </div>
-                    <div className={styles.roomsNumber}>
-                        <span className={styles.namingRooms}>Salle de Bain</span>
-                        <Button onClick={augmenterSalleDeBains}>+</Button>
-                        <span>{nombreSalleDeBains}</span>
-                        <Button onClick={diminuerSalleDeBains}>-</Button>
-                    </div>
-                    
-                </div>
-                <div>
-               <h2  className={styles.h2}> De combien de temps auriez-vous besoin?</h2>
-            <div className={styles.heures}>
-                        
-                        <Button  onClick={augmenterHeures}>+</Button>
-                        <span > {nombreHeures}h</span>
-                        <Button  onClick={diminuerHeures}>-</Button>
-                    </div></div>
-
+        <main className={styles.container}>
+            <div className={styles.reservationBox}>
+                <h2 className={styles.h2}>Réservez votre service de ménage</h2>
                 
-                    <h2   className={styles.h2} >Sélectionnez une date et une heure pour votre premier ménage</h2>
-            
-              <div  className={styles.datetime} >
-                    <LocalizationProvider  dateAdapter={AdapterDayjs}>
-                <DateTimePicker 
-                    label="Sélectionnez la date et l'heure"
-                    value={dateHours}
-                    onChange={handleDateTimeChange}
-                />
-            </LocalizationProvider>
-            </div >
-            
-            <div     className= {styles.confirmation}>
-            <Button  variant="contained" className= {styles.btnconf} onClick={handleReservationSubmit}>Confirmer</Button>
+                <div className={styles.section}>
+                    <h3 className={styles.h3}>🛏️ Sélection des pièces</h3>
+                    <div className={styles.containerGrid}>
+                        {Object.entries(nombrePieces).map(([piece, count]) => (
+                            <div key={piece} className={styles.roomsNumber}>
+                                <span className={styles.namingRooms}>{piece}</span>
+                                <div className={styles.counterButtons}>
+                                    <Button onClick={() => handlePieceChange(piece, 1)}>+</Button>
+                                    <span>{count}</span>
+                                    <Button onClick={() => handlePieceChange(piece, -1)}>-</Button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className={styles.section}>
+                    <h3 className={styles.h3}>⏳ Durée du service</h3>
+                    <div className={styles.heures}>
+                        <Button onClick={() => setNombreHeures(Math.min(8, nombreHeures + 1))}>+</Button>
+                        <span>{nombreHeures}h</span>
+                        <Button onClick={() => setNombreHeures(Math.max(3, nombreHeures - 1))}>-</Button>
+                    </div>
+                </div>
+
+                <div className={styles.section}>
+                    <h3 className={styles.h3}>📅 Choisissez la date et l'heure</h3>
+                    <div className={styles.datetime}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DateTimePicker 
+                                label="Sélectionnez la date et l'heure"
+                                value={dateHours}
+                                onChange={handleDateTimeChange}
+                            />
+                        </LocalizationProvider>
+                    </div>
+                </div>
+                
+                <div className={styles.confirmation}>
+                    <Button variant="contained" className={styles.btnconf} onClick={handleReservationSubmit}>Confirmer la réservation</Button>
+                </div>
             </div>
-            </div>
-
-            
-            
-
-        
-            
-
-
-
-          
         </main>
     );
 };
 
 export default Reservation;
-
-
- 

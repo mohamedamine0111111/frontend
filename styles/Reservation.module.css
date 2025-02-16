@@ -1,64 +1,72 @@
-
-
-
-.h2 {
-    background-color: #D9D9D9; 
-    border-radius: 8px;
-    padding: 10px; 
-    text-align: center; 
-    margin-bottom: 20px; 
-    color: #74757B ;
+.container {
+    background-color: #A9A9A9;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.h2 {
+    background-color: #D9D9D9;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    color: #74757B;
+}
 
+.h3 {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 1.3rem;
+}
+
+.reservationBox {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: auto;
+}
+
+.section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f0f0f0;
+}
+
+.containerGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
 
 .roomsNumber {
-    border: 1px solid #D9D9D9;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 15px;
+    background: #D9D9D9;
+    border-radius: 10px;
+    width: 130px;
+}
+
+.counterButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.heures, .datetime, .confirmation {
+    display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    width: 100px; 
-    height: 100px; 
-    
-}
-
-.heures {
-    
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    border: 1px solid #ccc;
-    
-
-
-}
-
-.containerRow {
-    display: flex;
-    justify-content: space-around; 
     align-items: center;
 }
 
-.datetime {
-
-    display: flex;
-    align-items: center; 
-    justify-content:center;
-}
-.confirmation{
-    display: flex;
-    align-items: center; 
-    justify-content:center;
-    margin-top: 50px;
- }
- .btnconf{
-    background-color:  #ccc;
+.btnconf {
+    background-color: #ccc;
     color: #74757B;
-
- }
- 
+}
